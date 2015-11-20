@@ -12,6 +12,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+Plug 'easymotion/vim-easymotion'
+Plug 'Valloric/YouCompleteMe'
 
 " misc
 Plug 'bling/vim-bufferline'
@@ -51,7 +53,7 @@ set textwidth=79
 set formatoptions=c,q,r,t
 set cursorline
 set colorcolumn=79
-hi colorcolumn cterm=NONE ctermbg=242
+hi colorcolumn cterm=NONE ctermbg=23
 set list lcs=trail:¬,tab:».
 
 " set <leader>
@@ -78,6 +80,7 @@ set undolevels=100
 " Colorscheme syntax highlighting
 syntax on
 colorscheme gruvbox
+set background=dark
 
 " session management
 let g:session_directory = "~/.vim/session"
@@ -109,10 +112,22 @@ nnoremap <C-k> <C-u>
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
 
+" ctrlP config
+let g:ctrlp_map = "<c-p>"
+nnoremap <leader>t :CtrlPMRU<CR>
+nnoremap <leader>bp :CtrlPBuffer<CR>
+
+" easy motion rebinded
+nmap <leader>f <Plug>(easymotion-f2)
+nmap <leader>F <Plug>(easymotion-F2)
 
 " Smart paste
 nnoremap <C-v> "+P=']
 inoremap <C-v> <C-o>"+P<C-o>=']
+
+" Keep search matches in the middle of the window.
+nnoremap n nzz
+nnoremap N Nzz
 
 " gruvbox colorsheme
 let g:gruvbox_italic=1
@@ -129,6 +144,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "augroup END
 
 " airline
+let g:airline_theme="bubblegum"
 let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#empty_message  =  "no .git"
 let g:airline#extensions#whitespace#enabled    =  0
