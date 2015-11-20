@@ -13,7 +13,12 @@ Plug 'bling/vim-airline'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 Plug 'easymotion/vim-easymotion'
-Plug 'Valloric/YouCompleteMe'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
+Plug 'garbas/vim-snipmate'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
 
 " misc
 Plug 'bling/vim-bufferline'
@@ -154,3 +159,16 @@ let g:airline#extensions#tabline#tab_nr_type   =  1 " tab number
 let g:airline#extensions#tabline#fnamecollapse =  1 " /a/m/model.rb
 let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
 
+""""""""""""""""""""""""""""""""
+"
+" COOL HACKS
+"
+""""""""""""""""""""""""""""""""
+" Make sure Vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \     execute 'normal! g`"zz' |
+                \ endif
+augroup END
